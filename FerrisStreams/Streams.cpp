@@ -50,6 +50,9 @@
 
 using namespace std;
 
+#ifndef MREMAP_MAYMOVE
+#define MREMAP_MAYMOVE 0
+#endif
 
 namespace Ferris
 {
@@ -2792,7 +2795,7 @@ protected:
             void* p = mremap( this->buffer,
                               this->getBufSize(),
                               newSize, MREMAP_MAYMOVE );
-
+            
             streamsize x = lseek( fd, 0, SEEK_CUR );
             if( x > ShouldBeEndOfFile )
             {

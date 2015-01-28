@@ -60,6 +60,7 @@ post-extract {
 
 
 configure.args  
-configure.cflags-append    -g -mmacosx-version-min=10.7
+configure.cflags-append    -g -mmacosx-version-min=10.7 -DMAC
+configure.cxxflags-append  -g -mmacosx-version-min=10.7 -DMAC
 configure.ldflags-append   -lintl -mmacosx-version-min=10.7
 

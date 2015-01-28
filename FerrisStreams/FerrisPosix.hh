@@ -32,7 +32,7 @@
 #define _ALREADY_INCLUDED_LIBFERRISSTREAMS_STREAMS_POSIX_H_
 
 #include <sys/mman.h>
-#include <iosfwd>
+#include <ios>
 
 int ferris_madvise(void *addr, size_t length, int advice);
 bool isBufferAllZero( const void* buffervp, std::streamsize size );
