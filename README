@@ -1,0 +1,52 @@
+This code was moved from libferris/Ferris/SignalStreams and a few other
+source files in libferris. The original code was Copyright (C) 2001 Ben Martin,
+some minor changes have been made to this source release by Ben Martin and thus
+files are marked with (C) 2001-2003.
+
+This library contains some extensions to Standard C++ IOStreams. 
+These extensions allow;
+
+* additions for UNIX semantics. For example a file stream can be 
+  created using o_mmap|o_mseq when one wants a memory mapped file
+  to be used an madvise(2) that access to that area will be sequential.
+
+* relative URL handling (passing "~/.myconf" to ifstream() will do the
+  right thing).
+
+* stream handles to be passed by value
+
+* easy reference counting on streambuf objects
+
+* closed signals to be fired when a streambuf is going to be
+  deleted. see ut_close_signal.cpp for an example.
+
+* A collection of IOStreams which complement the standard ones on offer
+  see MakeMemoryIOStream(), MakeFdIOStream(), MakeHoleyOStream(),
+      MakeLimitingIStream(), MakeProxyStream(), 
+      fcin(), fcout(), fcerr()
+
+* ferris_basic_streambuf<> base class for implementing custom streambuf subclasses
+  This contains much of the boilerplate style code from "Standard C++ IOStreams
+  and Locales" by Angelika Langer and Klaus Kreft. Also one_arg_manip<> from
+  the above book
+
+* XSLT style functions ends_with(), starts_with(), contains().
+
+* additional stream manipulators nl, nlf etc.
+
+* stream to string convertion functions for both stringstreams and istreams.
+
+These were split out of the main libferris library so that other library
+creators can use the streambuf class and pass-by-value iostream wrappers
+in their APIs. For example libstldb4 uses this library to allow partial
+retreival of data items using an iostream interface.
+
+Its a win-win, if other libraries use this to give a nice iostream interface
+then a libferris wrapper will be much easier to make for those other libraries
+so I can make libferris more powerful by mounting more libraries as a filesystem.
+
+Requires;
+	glib 2.0+
+	libsigc++ 1.0+
+	ferrisloki 1.6.0+
+
