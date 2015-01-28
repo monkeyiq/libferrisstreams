@@ -27,6 +27,9 @@ mkinstalldirs
 testrun.log
 testrun.sum
 
+testsuite/ferrisstreams.test/ferrisstreams.exp~
+testsuite/sampledata/Makefile.am~
+
 debian/README.Debian
 debian/compat
 debian/copyright
