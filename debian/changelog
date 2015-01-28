@@ -1,0 +1,19 @@
+ferrisstreams (0.5.5+nmu1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Freedombox build:
+
+ -- root <ben@freedombox>  Sat, 25 Feb 2012 14:36:28 +1000
+
+ferrisstreams (0.5.5) unstable; urgency=low
+
+  * automated release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- root <monkeyiq@users.sf.net>  Mon, 31 Dec 2007 13:25:59 +1000
+
+ferrisstreams (0.5.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- root <monkeyiq@users.sf.net>  Mon, 26 Nov 2007 07:53:42 +1000
+

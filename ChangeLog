@@ -1,0 +1,234 @@
+0.5.4
+
+2009-08-16  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* added IOStream version of tee stream
+
+0.5.3
+
+2008-05-24  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* removed older deprecated 2.x sigc++ api usage
+
+0.5.1
+
+2006-03-22  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.5.0
+	  Optional ability to build against libsigc++-2.x
+	
+0.5.0
+
+2006-03-20  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Optional ability to build against libsigc++-2.x
+	
+2006-03-14  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.4.2
+	New tee stream class to output to two streams at once,
+	New starts_with() overload for const char* comparisons.
+0.4.2
+
+2006-03-14  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* New tee stream class
+
+2006-01-21  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* new starts_with() which takes a const char* as the starting string
+	
+2005-12-08  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.4.1
+	* ChangeLog: Updated fcnull() to use a static fd to /dev/null,
+	  radixdump() no longer defaults to comma seperating its data after 4 bytes,
+	  New MakeFIFO() call allowing control over opening and mode of the new fifo.
+
+0.4.1
+
+2005-09-07  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* updated fcnull() to use a static RW fd to /dev/null
+
+2005-09-06  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* radixdump() no longer defaults to comma seperating its data after 4 bytes.
+
+2005-09-05  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Released 0.4.0:
+	  Building against stlport is now optional,
+	  Some minor IOStreams cleanups for modern gcc stl/iostream compatability
+	  fixed a sublte bug in ferris_proxyibuf to do with TakeOwnerShip argument
+	
+(0.4.0)
+
+2005-09-04  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* added the ability to not use stlport
+	* some minor iostreams cleanups for modern gcc stl/iostream compatability
+	* fixed a sublte bug in ferris_proxyibuf todo with TakeOwnerShip argument
+
+2005-08-22  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* 0.3.13 released.
+	  Added the ability for an FD based streambuf to close its fd when 
+	  the streambuf is distroyed. Handy for pipes.
+	
+(0.3.13)
+
+2005-06-22  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* 0.3.12 released.
+	Added readonly IOStream factory, stream and streambuf class,
+	CleanupURL() now uses internal ferris_g_get_home_dir() instead of
+	glib2 g_get_home_dir() so that when a ferrisstreams app changes its
+	uid its home_dir is correct for the new user aswell.
+	Moved to using -release instead of -version-info for libtool versioning.
+	Fix for double base class typedef declaration in ferris_basic_double_buffered_streambuf.
+	
+(0.3.12)
+
+2005-06-22  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Added readonly IOStream factory, stream and streambuf class
+
+	* CleanupURL() now uses internal ferris_g_get_home_dir() instead of
+	  glib2 g_get_home_dir() so that when a ferrisstreams app changes its
+	  uid its home_dir is correct for the new user aswell.
+	
+2005-03-19  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* moved to using -release instead of -version-info for libtool versioning
+	
+	* fix for double base class typedef declaration in ferris_basic_double_buffered_streambuf
+
+2004-12-26  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.11
+	  Added optional gcc hidden symbol support, 
+          additional length test in starts_with().
+
+(0.3.11)
+
+2004-12-17  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* added gcc symbol visibility support
+
+2004-10-19  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* added additional length test to starts_with
+
+2004-08-30  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.10
+
+(0.3.10)
+
+2004-07-17  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.9
+
+2004-08-30  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* added fcnull()
+
+
+(0.3.9)
+
+2004-07-12  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Added specialization of string toType<string>( string& ) to return passed 
+	  string fully intact.
+(0.3.8)
+
+2004-05-30  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Fixes to allow compilation with gcc 3.4
+
+2004-05-25  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.7
+
+(0.3.7)
+
+2004-05-25  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* fixed a bug in the open() method of ofstream implicitly adding ios::in
+	  by default to the open flags instead of ios::out which it should
+	  have. The constructor of ofstream already added ios::out instead of ios::in 
+	  by default.
+
+2004-02-15  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.6
+
+(0.3.6)
+
+2004-02-15  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* build no longer changes prefix in configure.in. Moved to using 
+	  common M4 macros for configure time detection.
+
+2004-01-18  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.5
+
+(0.3.5)
+
+2004-01-18  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* New inline StreamToString( iss, s ) function
+	
+2003-12-28  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.4
+	
+(0.3.4)
+
+2003-12-28  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* added ferris_ios::o_nouncrypt bit
+
+2003-11-21  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* released 0.3.3
+
+
+	
+(0.3.3)
+
+2003-08-31  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* created a version of CleanupURL() that doesn't remove the file:// prefix
+	  for use in RDF context mounting in libferris-1.1.12.
+
+	* released 0.3.2
+	
+(0.3.2)
+2003-08-31  monkeyiq  <monkeyiq@users.sourceforge.net>
+
+	* Email about ferrisstreams not working with gcc33 again. Streams.cpp : 516
+    streampos  FakeBegin;
+    streampos  FakeEnd;
+Want to use pos_type for seek/set position
+
+(0.3.1)
+	Tue Aug 19, 2003 @ 11:52 PM
+	fixes for gcc in valkyrie-linux/3.3
+	
+(0.3.0)
+	Mon Aug 18, 2003 @  6:37 PM
+	Changes for the template access control in gcc33
+
+(0.2.2)
+	Sun May 18, 2003 @ 11:58 PM
+	Changes for rh9 distro
+	
+(0.2.0)
+	Mon May  5, 2003 @  9:12 PM
+	Initial public release of libferrisstreams.
+	Based on Ferris/SignalStreams.cpp/hh from libferris 1.1x
+
+	

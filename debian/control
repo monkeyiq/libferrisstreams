@@ -1,0 +1,20 @@
+Source: ferrisstreams
+Priority: extra
+Maintainer: Ben Martin <monkeyiq@users.sf.net>
+Build-Depends: debhelper (>= 5), autotools-dev
+Standards-Version: 3.7.2
+Section: libs
+
+Package: ferrisstreams-dev
+Section: libdevel
+Architecture: any
+Depends: ferrisstreams1 (= ${Source-Version})
+Description: Standard C++ IOStreams extensions
+ Standard C++ IOStreams extensions
+
+Package: ferrisstreams1
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Standard C++ IOStreams extensions
+ Standard C++ IOStreams extensions

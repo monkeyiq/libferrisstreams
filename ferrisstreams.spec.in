@@ -1,0 +1,64 @@
+Version: @FERRISSTREAMS_VERSION@
+Release: 50007
+Name:    ferrisstreams
+
+Summary: Standard C++ IOStreams extensions
+License: GPL
+Group: System Environment/Libraries
+Source: http://prdownloads.sourceforge.net/witme/%{name}-%{version}.tar.bz2
+BuildRoot: %{_tmppath}/%{name}-root
+Packager: Ben Martin <monkeyiq@users.sourceforge.net>
+URL: http://sourceforge.net/project/showfiles.php?group_id=16036
+Requires: glib2 >= 2.0.0
+Requires: ferrisloki >= 1.6.0
+Requires: popt >= 1.7
+BuildRequires: libsigc++2-devel 
+BuildRequires: pkgconfig
+BuildRequires: glib2-devel
+BuildRequires: gcc-c++
+BuildRequires: ferrisloki-devel >= 1.6.0
+BuildRequires: popt-devel
+Provides: libferrisstreams-05:0:0.so
+
+%description
+Standard C++ IOStreams extensions
+
+
+%prep
+%setup -q
+
+%build
+%configure --enable-hiddensymbols --with-sigcxx-2x=yes
+
+if [ "$SMP" != "" ]; then
+  (make "MAKE=make -k -j $SMP"; exit 0)
+  make
+else
+  make
+fi
+
+%install
+%makeinstall
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
+%files
+%defattr(-,root,root,0755)
+%doc AUTHORS README COPYING ChangeLog INSTALL
+%{_bindir}/*
+%{_libdir}/lib*
+%{_libdir}/pkgconfig
+%{_includedir}/*
+
+
+%changelog
+* Mon Feb 9 2004 Ben Martin
+  Changed for no PREFIX and more macros
+
+* Thu May 3 2003 Ben Martin
+- Created 
