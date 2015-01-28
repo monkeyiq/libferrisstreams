@@ -82,7 +82,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#if defined(STLPORT) || defined(_RWSTD_VER_STR)
+#if defined(STLPORT) || defined(_RWSTD_VER_STR) || defined(MAC)
 #define FERRIS_STD_BASIC_FILEBUF_SUPERCLASS std::basic_filebuf
 #else
 #include <ext/stdio_filebuf.h>
