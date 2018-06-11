@@ -75,7 +75,6 @@
 #include <sigc++/sigc++.h>
 #include <sigc++/signal.h>
 #include <sigc++/slot.h>
-#include <sigc++/object.h>
 #include <sigc++/connection.h>
 
 #include <stdio.h>

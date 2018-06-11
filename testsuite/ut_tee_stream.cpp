@@ -101,17 +101,17 @@ void runtest()
     
     {
         fh_stringstream ss1;
-        fh_ofstream ss2("/tmp/alice13a.txt.out",ios::trunc|ios::out);
+        fh_ofstream ss2("/tmp/sampledata/file.txt.out",ios::trunc|ios::out);
 
         fh_ostream oss = Factory::MakeTeeStream( ss1, ss2 );
-        fh_ifstream iss("/tmp/alice13a.txt" );
+        fh_ifstream iss("/tmp/sampledata/file.txt" );
 
         copy( iss, oss );
         cout << "ss1.size:" << ss1.str().size() << endl;
-        if( 153477 != ss1.str().size() )
+        if( 100002 != ss1.str().size() )
         {
             E() << "ss1 in memory copy of alice13a is incorrect size"
-                << " expected:" << 153477
+                << " expected:" << 100002
                 << " got:" << ss1.str().size()
                 << endl;
         }

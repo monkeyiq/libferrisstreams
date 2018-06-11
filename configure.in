@@ -1,4 +1,4 @@
-AC_INIT(ferrisstreams, 0.6.6)
+AC_INIT(ferrisstreams, 0.7.0)
 
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION

@@ -74,13 +74,13 @@ fh_ostream& E()
 
 void runtest()
 {
-    fh_ifstream* base_iss = new fh_ifstream("/tmp/alice13a.txt" );
+    fh_ifstream* base_iss = new fh_ifstream("/tmp/sampledata/file.txt" );
     fh_istream ss = Factory::MakeProxyStream( base_iss, true );
     base_iss = 0;
     
-    ss.seekg( 200 );
+    ss.seekg( 999 * 77  );
     string s;
-    string expected = "esearch";
+    string expected = "u0";
     ss >> s;
     if( s != expected )
     {
@@ -89,7 +89,7 @@ void runtest()
             << " got:" << s << endl;
     }
 
-    expected = "Electronic";
+    expected = "KljEoLUKJ";
     ss >> s;
     if( s != expected )
     {

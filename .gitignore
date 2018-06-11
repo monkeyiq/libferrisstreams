@@ -1,5 +1,7 @@
 .cvsignore
 CVS/
+compile
+archives
 FerrisStreams/.cvsignore
 FerrisStreams/CVS/
 FerrisStreams/Makefile
@@ -64,3 +66,16 @@ debian/prerm.ex
 debian/shlibs.local.ex
 debian/tmp/
 debian/watch.ex
+
+ferrisstreams.log
+ferrisstreams.sum
+
+testsuite/ut_close_signal
+testsuite/ut_fd_streams
+testsuite/ut_limiting_istream
+testsuite/ut_nullstream
+testsuite/ut_proxy_streams
+testsuite/ut_radix_dump
+testsuite/ut_stringstream
+testsuite/ut_tee_stream
+

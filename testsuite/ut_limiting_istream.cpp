@@ -74,12 +74,12 @@ fh_ostream& E()
 
 void runtest()
 {
-    fh_ifstream base_iss("/tmp/alice13a.txt" );
+    fh_ifstream base_iss("/tmp/sampledata/file.txt" );
 
     std::streampos be = 200;
     std::streampos en = 200 + 20;
-    string expected = "esearch Electronic L";
-    // dd if=/tmp/alice13a.txt of=/tmp/chunk bs=20 count=1 skip=10
+    string expected = "/lZaKDh/8ANZ7owpNGkf";
+    // dd if=/tmp/sampledata/file.txt of=/tmp/chunk bs=20 count=1 skip=10
     
     fh_istream ss = Factory::MakeLimitingIStream( base_iss, be, en );
     string s;
