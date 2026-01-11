@@ -79,3 +79,16 @@ testsuite/ut_radix_dump
 testsuite/ut_stringstream
 testsuite/ut_tee_stream
 
+.deps
+.libs
+*.lo
+*.la
+/config.h
+/config.log
+/config.status
+*~
+/testsuite/sampledata/file.txt
+/libtool
+/stamp-h1
+/ferrisstreams-config
+*.o

@@ -45,7 +45,7 @@ namespace Ferris
          * @param  path Where to put the new fifo
          * @return fd open in read+write mode
          */
-        FERRISEXP_API int MakeFIFO( const std::string& path ) throw( CreateFIFO );
+        FERRISEXP_API int MakeFIFO( const std::string& path );
 
         /**
          * unlink the path and create a new fifo there. MAYBE Open the fifo
@@ -56,8 +56,7 @@ namespace Ferris
          */
         FERRISEXP_API int MakeFIFO( const std::string& path,
                                     bool should_open,
-                                    int openmode = 0 /* O_RDWR | O_NONBLOCK */ )
-            throw( CreateFIFO );
+                                    int openmode = 0 /* O_RDWR | O_NONBLOCK */ );
     };
 };
 #endif

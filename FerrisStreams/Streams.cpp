@@ -2384,7 +2384,7 @@ public:
         
 
 
-        int  MakeFIFO( const std::string& path_const ) throw( CreateFIFO )
+        int  MakeFIFO( const std::string& path_const )
         {
             return MakeFIFO( path_const, true, O_RDWR | O_NONBLOCK );
         }
@@ -2392,7 +2392,6 @@ public:
         FERRISEXP_API int MakeFIFO( const std::string& path_const,
                                     bool should_open,
                                     int openmode )
-            throw( CreateFIFO )
         {
             string path = CleanupURL( path_const );
 
