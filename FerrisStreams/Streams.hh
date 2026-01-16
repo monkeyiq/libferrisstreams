@@ -81,6 +81,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <boost/function.hpp>
+
+
 #if defined(STLPORT) || defined(_RWSTD_VER_STR) || defined(MAC)
 #define FERRIS_STD_BASIC_FILEBUF_SUPERCLASS std::basic_filebuf
 #else
@@ -465,8 +468,9 @@ namespace Ferris
         typedef typename traits_type::pos_type  pos_type;
         typedef typename traits_type::off_type  off_type;
 
-        typedef Loki::Functor< int,
-                               LOKI_TYPELIST_2( char_type*, std::streamsize ) > write_out_given_data_functor_t;
+//        typedef Loki::Functor< int,
+//                               LOKI_TYPELIST_2( char_type*, std::streamsize ) > write_out_given_data_functor_t;
+        typedef boost::function<int(char_type*, std::streamsize)> write_out_given_data_functor_t;
         write_out_given_data_functor_t write_out_given_data_functor;
         void setWriteOutGivenDataFunctor( const write_out_given_data_functor_t& f )
             {
@@ -476,10 +480,13 @@ namespace Ferris
         ferris_basic_streambuf()
             :
             buffer(new char_type[ this->getBufSize() ]),
-            CurrentMode( mode_mute )
+            CurrentMode( mode_mute ),
+            write_out_given_data_functor(write_out_given_data_functor_t(
+                                             std::bind(
+                                                 std::mem_fn(&_Self::write_out_given_data), this, std::placeholders::_1, std::placeholders::_2)))
             {
-                setWriteOutGivenDataFunctor(
-                    write_out_given_data_functor_t( this, &_Self::write_out_given_data ) );
+//                setWriteOutGivenDataFunctor(
+//                    write_out_given_data_functor_t( this, &_Self::write_out_given_data ) );
                 
                 this->setg( 0, 0, 0 );
                 this->setp( 0, 0 );
@@ -495,10 +502,13 @@ namespace Ferris
         ferris_basic_streambuf( void* data, const int data_size )
             :
             buffer( static_cast<char_type*>(data) ),
-            CurrentMode( mode_mute )
+            CurrentMode( mode_mute ),
+            write_out_given_data_functor(write_out_given_data_functor_t(
+                                             std::bind(
+                                                 std::mem_fn(&_Self::write_out_given_data), this, std::placeholders::_1, std::placeholders::_2)))            
             {
-                setWriteOutGivenDataFunctor(
-                    write_out_given_data_functor_t( this, &_Self::write_out_given_data ) );
+//                setWriteOutGivenDataFunctor(
+//                    write_out_given_data_functor_t( this, &_Self::write_out_given_data ) );
 
                 this->setBufSize( data_size );
                 this->setg( 0, 0, 0 );
@@ -1143,7 +1153,7 @@ namespace Ferris
         sh_t sh;
 
     public:
-        typedef sigc::signal2< void, sb_t*, _HandleT* > StreamBufferChangedSignal_t;
+        typedef sigc::signal< void ( sb_t*, _HandleT* ) > StreamBufferChangedSignal_t;
         StreamBufferChangedSignal_t& getStreamBufferChangedSig()
             {
                 m_hasUserGottenChangedSignal = true;
@@ -1155,10 +1165,12 @@ namespace Ferris
         typedef
         ferris_streambuf< _CharT, _Traits > sb_changed_callback_ferris_streambuf;
         
-        typedef Loki::Functor<
-            void,
-            LOKI_TYPELIST_2( sb_changed_callback_std_streambuf*,
-                        sb_changed_callback_ferris_streambuf* ) > sb_changed_callback_t;
+        typedef boost::function<void( sb_changed_callback_std_streambuf*,
+                                      sb_changed_callback_ferris_streambuf* )> sb_changed_callback_t;
+//        typedef Loki::Functor<
+//            void,
+//            LOKI_TYPELIST_2( sb_changed_callback_std_streambuf*,
+//                        sb_changed_callback_ferris_streambuf* ) > sb_changed_callback_t;
         sb_changed_callback_t sb_changed_callback;
         bool m_sb_changed_callback_used;
         
@@ -1509,7 +1521,7 @@ namespace Ferris
 
 //    typedef fh_istream closeSignalStream_t;
     typedef Ferris_istream<char> closeSignalStream_t;
-    typedef sigc::signal2< void, closeSignalStream_t&, std::streamsize > closeSignal_t;
+    typedef sigc::signal< void ( closeSignalStream_t&, std::streamsize ) > closeSignal_t;
     
     FERRISEXP_API closeSignal_t&
     getClosedSignal( ferris_streambuf< char, std::char_traits<char> >* sh );
@@ -1545,7 +1557,7 @@ namespace Ferris
 //          * A signal that is emitted when the object is about to die.
 //          */
 //         typedef Ferris_istream<char> SigStream_t;
-//         typedef sigc::signal2< void, SigStream_t&, std::streamsize > CloseSignal_t;
+//         typedef sigc::signal< void ( SigStream_t&, std::streamsize ) > CloseSignal_t;
         
 //         class CloseSigHolder : public sigc::trackable
 //         {

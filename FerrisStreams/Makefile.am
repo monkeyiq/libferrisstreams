@@ -4,7 +4,6 @@ MAINTAINERCLEANFILES = Makefile.in
 
 
 INCLUDES =                                              \
-	@STLPORT_CFLAGS@                                \
 	-I. 						\
 	-I$(srcdir) -I$(top_srcdir) 			\
 	-I$(top_builddir)				\

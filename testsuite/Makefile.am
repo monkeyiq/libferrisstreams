@@ -10,7 +10,6 @@ noinst_PROGRAMS = \
 	ut_radix_dump ut_tee_stream
 
 INCLUDES =                                              \
-	@STLPORT_CFLAGS@                                \
 	-I. 						\
 	-I$(srcdir) -I$(top_srcdir) -I$(top_srcdir)/src	\
 	-I$(top_builddir)				\

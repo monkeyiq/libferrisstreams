@@ -67,22 +67,38 @@ AC_ARG_ENABLE(hiddensymbols,
   fi
 ])
 
+###############################################################################
+###############################################################################
+###############################################################################
+# Test for BOOST library
+###############################################################################
+
+TESTING_FEATURE="Boost C++ library";
+AM_FERRIS_BOOST( 1.33.1, 
+	[ echo "Found boost library ..."; ],
+	[ AC_MSG_ERROR([ERROR: boost 1.33.1 (or 1.34.1 or maybe later) is required for building libferris]); exit; ] )
+
+AC_ARG_ENABLE(boostipc,
+  [AS_HELP_STRING([--enable-boostipc], [assume boost has IPC support and build code that uses it (default=no)])],
+[],[])
+
+have_boostipc=yes
+AM_CONDITIONAL(HAVE_BOOST_IPC, test x"$have_boostipc" = xyes)
 
 ###############################################################################
 ###############################################################################
 ###############################################################################
 
-AM_FERRIS_STLPORT_OPTIONAL( 4.5.0 )
-AM_FERRIS_SIGC2( 2.0.0 )
-AM_FERRIS_LOKI( 2.1.0 )
+AM_FERRIS_SIGC3( 3.0.0 )
+AM_FERRIS_LOKI( 2.3.0 )
 
 ###############################################################################
 
 AM_PATH_GLIB_2_0( 2.0.6, [], [], [gmodule gobject] )
 
-CFLAGS=" $STLPORT_CFLAGS $CFLAGS $FERRISSTREAMS_CF "
-CXXFLAGS=" $STLPORT_CFLAGS $CXXFLAGS $FERRISSTREAMS_CF "
-LDFLAGS=" $STLPORT_LDFLAGS $LDFLAGS $FERRISSTREAMS_LD "
+CFLAGS=" $CFLAGS $FERRISSTREAMS_CF "
+CXXFLAGS=" $CXXFLAGS $FERRISSTREAMS_CF "
+LDFLAGS=" $LDFLAGS $FERRISSTREAMS_LD "
 AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
 AC_SUBST(LDFLAGS)

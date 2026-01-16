@@ -7,7 +7,7 @@ Name: ferrisstreams
 Description: Standard C++ IOStream extensions.
 Version: @VERSION@
 Requires: @REQUIREMENTS@
-Libs: -L${libdir} -lferrisstreams @STLPORT_LIBS@ @SIGC_LIBS@ @LOKI_LIBS@ @GLIB_LIBS@
-Cflags: -I${includedir}/FerrisStreams @STLPORT_CFLAGS@  @SIGC_CFLAGS@ @LOKI_CFLAGS@ @GLIB_CFLAGS@
+Libs: -L${libdir} -lferrisstreams  @SIGC_LIBS@ @LOKI_LIBS@ @GLIB_LIBS@
+Cflags: -I${includedir}/FerrisStreams   @SIGC_CFLAGS@ @LOKI_CFLAGS@ @GLIB_CFLAGS@
 
 
