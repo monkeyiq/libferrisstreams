@@ -1,4 +1,4 @@
-AC_INIT(ferrisstreams, 0.7.0)
+AC_INIT([ferrisstreams],[2.0.0])
 
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
@@ -28,7 +28,7 @@ AM_INIT_AUTOMAKE([1.9 tar-ustar])
 AM_MAINTAINER_MODE
 
 AC_CANONICAL_HOST
-AC_ISC_POSIX
+AC_SEARCH_LIBS([strerror],[cposix])
 
 define([AC_LIBTOOL_LANG_F77_CONFIG], [:])dnl
 AC_PROG_CC
@@ -37,8 +37,16 @@ AC_PROG_CXX
 
 AC_DISABLE_STATIC
 
-AC_STDC_HEADERS
-AM_PROG_LIBTOOL
+m4_warn([obsolete],
+[The preprocessor macro 'STDC_HEADERS' is obsolete.
+  Except in unusual embedded environments, you can safely include all
+  C89 headers unconditionally.])dnl
+# Autoupdate added the next two lines to ensure that your configure
+# script's behavior did not change.  They are probably safe to remove.
+AC_CHECK_INCLUDES_DEFAULT
+AC_PROG_EGREP
+
+LT_INIT
 
 STLPORT_CFLAGS=""
 STLPORT_LDFLAGS=""
@@ -118,7 +126,7 @@ AC_SUBST(LIBFERRISSTREAMS_LA)
 #
 # All done.
 #
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 FerrisStreams/Makefile
 ferrisstreams-config
@@ -128,8 +136,9 @@ testsuite/Makefile
 testsuite/ferrisstreams.test/Makefile
 testsuite/config/Makefile
 testsuite/sampledata/Makefile
-],
-[
-chmod +x ferrisstreams-config
 ])
+AC_CONFIG_COMMANDS([default],[
+chmod +x ferrisstreams-config
+],[])
+AC_OUTPUT
 
